@@ -1,2 +1,0 @@
-# TypeDidi
-Personal practise
