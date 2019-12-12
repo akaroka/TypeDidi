@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'config.apps.ConfigConfig',
+    'comment.apps.CommentConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,7 +82,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'data_castle',
         'USER':'root',
-        'PASSWORD':'',
+        'PASSWORD':'Akaroka9421',
         'HOST':'127.0.0.1',
         'PORT':'3306',
     }
