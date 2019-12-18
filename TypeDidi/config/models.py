@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 class Link(models.Model):
+
+    def __str__(self):
+        return self.title
+
     STATUS_NORMAL = 1
     STATUS_DELETE = 0
     STATUS_ITEMS = (
@@ -21,6 +25,10 @@ class Link(models.Model):
 
 
 class SideBar(models.Model):
+
+    def __str__(self):
+        return self.title
+
     STATUS_SHOW = 1
     STATUS_HIDE = 0
     STATUS_ITEMS = (

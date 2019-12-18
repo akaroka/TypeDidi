@@ -4,6 +4,10 @@ from blog.models import Post
 
 # Create your models here.
 class Comment(models.Model):
+
+    def __str__(self):
+        return str(self.nickname) + '对《' + str(self.target) + '》的评论'
+
     STATUS_NORMAL = 1
     STATUS_DELETE = 0
     STATUS_ITEMS = (
