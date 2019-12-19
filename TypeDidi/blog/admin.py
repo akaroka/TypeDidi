@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 from .models import Post, Category, Tag
+from .adminforms import PostAdminForm
 
 
 # Register your models here.
@@ -20,11 +21,18 @@ class CategoryOwnerFilter(admin.SimpleListFilter):
             return queryset.filter(category_id=self.value())
         return queryset
 
+class PostInline(admin.TabularInline):
+    fields = ('title', 'desc')
+    extra = 1
+    model = Post
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'status', 'is_nav', 'owner', 'created_time')
     fields = ('name', 'status', 'is_nav', 'owner')
+
+    inlines = [PostInline, ]
 
     def save_model(self, request, obj, form, change):
         obj.owner = request.user
@@ -43,6 +51,9 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+
+    form = PostAdminForm
+
     list_display = [
         'title', 'category', 'status', 'owner',
         'created_time', 'operator'
