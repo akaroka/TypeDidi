@@ -20,11 +20,11 @@ from blog.views import post_detail,post_list
 from config.views import links
 
 urlpatterns = [
-    path('', post_list),
-    re_path('category/(?P<category_id>\d+)/', post_list),
-    re_path('tag/(?P<tag_id>\d+)/', post_list),
-    re_path('post/(?P<post_id>\d+).html', post_detail),
-    path('links/',links),
-    path('super_admin/', admin.site.urls),
-    path('admin/', custome_site.urls),
+    path('', post_list, name='index'),
+    re_path('category/(?P<category_id>\d+)/', post_list, name='category-list'),
+    re_path('tag/(?P<tag_id>\d+)/', post_list, name='tag-list'),
+    re_path('post/(?P<post_id>\d+).html', post_detail, name='post-detail'),
+    path('links/',links, name='links'),
+    path('super_admin/', admin.site.urls, name='super-admin'),
+    path('admin/', custome_site.urls, name='admin'),
 ]

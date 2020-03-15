@@ -1,0 +1,8 @@
+<ul>
+    {% for post in posts %}
+    <li>
+        <a href="{% url 'post-detail' post.id %}">点我！{{ post.title }}</a>
+
+
+    {% endfor %}
+</ul>
